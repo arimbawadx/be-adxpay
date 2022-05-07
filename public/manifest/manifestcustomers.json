@@ -1,0 +1,79 @@
+{
+	"short_name": "ADXPAY",
+	"name": "ADX-PAY - One Pay to All",
+	"lang": "en",
+	"start_url": "/customers/dashboard",
+	"background_color": "#ffffff",
+	"theme_color": "#000000",
+	"dir": "ltr",
+	"display": "standalone",
+	"orientation": "any",
+	"icons": [
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/android-icon-192x192-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-180x180-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "180x180"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-152x152-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "152x152"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-144x144-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "144x144"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-120x120-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "120x120"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-114x114-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "114x114"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/favicon-96x96-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-76x76-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "76x76"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-72x72-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "72x72"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-60x60-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "60x60"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/apple-icon-57x57-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "57x57"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/favicon-32x32-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "32x32"
+		},
+		{
+			"src": "https://manifest.arimbawadx.com/adxpay_manifest/favicon-16x16-seochecker-manifest-011.jpg",
+			"type": "image/png",
+			"sizes": "16x16"
+		}
+	],
+	"prefer_related_applications": false
+}
