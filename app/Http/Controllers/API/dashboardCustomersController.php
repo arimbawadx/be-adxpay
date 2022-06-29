@@ -427,10 +427,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -466,6 +463,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -698,10 +700,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -737,6 +736,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -969,10 +973,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -1008,6 +1009,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -1240,10 +1246,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -1279,6 +1282,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -1511,10 +1519,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -1550,6 +1555,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -1782,10 +1792,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -1821,6 +1828,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -2053,10 +2065,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -2092,6 +2101,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -2324,10 +2338,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -2363,6 +2374,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -2595,10 +2611,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -2634,6 +2647,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -2866,10 +2884,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -2905,6 +2920,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -3138,10 +3158,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -3177,6 +3194,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
@@ -3410,10 +3432,7 @@ class dashboardCustomersController extends Controller
             $Customer = Customers::where('id', $idCustomer)->get()->first();
             $dompetSekarang = $Customer->saldo;
             if ($dompetSekarang >= $harga) {
-                $saldoNew = $dompetSekarang - $harga;
-                $Customer->saldo = $saldoNew;
-                $Customer->save();
-                // end pengurangan dompet
+
 
                 // melanjutkan trx
                 // membuat trxid_api
@@ -3449,6 +3468,11 @@ class dashboardCustomersController extends Controller
                         'keterangan' => $decodeResponsePostPrabayar['responseMessage'],
                     ], 200);
                 } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
 
                     // Get status Trx 
                     $curlGetPrabayarHistory = curl_init();
