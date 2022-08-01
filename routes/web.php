@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboardCSController;
 use App\Http\Controllers\dashboardCustomersController;
@@ -268,3 +269,5 @@ Route::get('/ip', function () {
 	$checkLoc = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
 	return $checkLoc->toArray();
 });
+
+Route::get('/login-with-google', [AuthController::class, 'LoginWithGoogle']);

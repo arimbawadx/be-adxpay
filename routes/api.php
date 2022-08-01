@@ -48,3 +48,4 @@ Route::middleware(['APISessionCustomerServices'])->group(function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/daftar-cus', [dashboardCustomersController::class, 'daftarCustomers']);
+Route::post('/new-cus-gakun', [AuthController::class, 'LoginWithGoogle']);
