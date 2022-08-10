@@ -24,6 +24,7 @@ Route::middleware(['APISessionCustomers'])->group(function () {
     Route::get('/get-data-trx-cus', [dashboardCustomersController::class, 'getDataTrxCustomer']);
     Route::get('/get-bukti-trx-cus/{id}', [dashboardCustomersController::class, 'getBuktiTrxCustomer']);
     Route::get('/get-prabayar-produk/{id}', [dashboardCustomersController::class, 'GetPrabayarProduct']);
+    Route::get('/get-prabayar-operator/{id}', [dashboardCustomersController::class, 'GetPrabayarOperator']);
     Route::get('/get-data-hutang', [dashboardCustomersController::class, 'getDataHutang']);
     Route::post('/transaksi/tarik-coin', [dashboardCustomersController::class, 'tarikCoin']);
     Route::get('/transaksi/update/{id}', [dashboardCustomersController::class, 'UpdatePendingTrx']);

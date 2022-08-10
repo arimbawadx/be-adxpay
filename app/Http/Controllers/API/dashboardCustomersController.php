@@ -121,6 +121,30 @@ class dashboardCustomersController extends Controller
         // end Get Prabayar Product
     }
 
+    public function GetPrabayarOperator($id)
+    {
+        // Get Prabayar Product
+        $curlGetPrabayarProduct = curl_init();
+        curl_setopt_array($curlGetPrabayarProduct, array(
+            CURLOPT_URL => "https://api.serpul.co.id/prabayar/operator?product_id=$id",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                'Accept: application/json',
+                'Authorization: ' . config('api.serpul_key_api'),
+            ),
+        ));
+        $responseGetPrabayarProduct = curl_exec($curlGetPrabayarProduct);
+        $decodeResponseGetPrabayarProduct = json_decode($responseGetPrabayarProduct, true);
+        $GetPrabayarProduct = $decodeResponseGetPrabayarProduct['responseData'];
+        return $GetPrabayarProduct;
+        // $PrabayarProduct = $GetPrabayarProduct['responseData']['balance'];
+        // end Get Prabayar Product
+    }
+
     public function getDataHutang(Request $request)
     {
         $idCustomer = Customers::where('username', $request->username)->first()->id;
