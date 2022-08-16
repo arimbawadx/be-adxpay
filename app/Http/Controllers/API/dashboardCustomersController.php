@@ -3613,7 +3613,7 @@ class dashboardCustomersController extends Controller
         // Post Prabayar
         $dataPostPrabayar = [
             "no_pelanggan" => $id,
-            "product_id" => $PLN,
+            "product_id" => 'PLN',
             "ref_id" => $trxid_api,
         ];
         $curlPostPrabayar = curl_init();
