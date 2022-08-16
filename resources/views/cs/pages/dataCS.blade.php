@@ -71,7 +71,6 @@
                   </thead>
                   <tbody>
                     @foreach($dataCS as $i => $dataCS)
-                    @if($dataCS->username != "CS0511994064")
                     <tr>
                       <th>{{$i+1}}</th>
                       <td>{{$dataCS -> name}}</td>
@@ -122,7 +121,6 @@
                         </div>
                       </div>
                     </div>
-                    @endif
                     @endforeach
                   </tbody>
                 </table>
@@ -178,4 +176,3 @@
 </section>
 <!-- /.content-wrapper -->
 @endsection
-

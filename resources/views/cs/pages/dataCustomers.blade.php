@@ -66,7 +66,6 @@
                   </thead>
                   <tbody>
                     @foreach($dataCustomer as $i => $dataCustomer)
-                    <!-- @if($dataCustomer->username != "CUS0511994064") -->
                     <tr>
                       <th>{{$i+1}}</th>
                       <td>{{$dataCustomer -> name}} @if($dataCustomer -> verified == 1)<i class="bi bi-patch-check-fill text-primary"></i>@else<i class="bi bi-patch-exclamation-fill text-warning"></i>@endif</td>
@@ -170,7 +169,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- @endif -->
                     @endforeach
                   </tbody>
                 </table>
