@@ -3605,4 +3605,33 @@ class dashboardCustomersController extends Controller
             'kode' => $random,
         ], 200);
     }
+
+    public function CheckTagihanPLN($id)
+    {
+        $trxid_api = date('Ymdhis');
+
+        // Post Prabayar
+        $dataPostPrabayar = [
+            "no_pelanggan" => $id,
+            "product_id" => $PLN,
+            "ref_id" => $trxid_api,
+        ];
+        $curlPostPrabayar = curl_init();
+        curl_setopt_array($curlPostPrabayar, array(
+            CURLOPT_URL => "https://api.serpul.co.id/pascabayar/check",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $dataPostPrabayar,
+            CURLOPT_HTTPHEADER => array(
+                'Accept: application/json',
+                'Authorization: ' . config('api.serpul_key_api'),
+            ),
+        ));
+        $responsePostPrabayar = curl_exec($curlPostPrabayar);
+        return $decodeResponsePostPrabayar = json_decode($responsePostPrabayar, true);
+        // end Post Prabayar
+    }
 }
