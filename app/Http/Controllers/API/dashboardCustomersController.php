@@ -2003,7 +2003,7 @@ class dashboardCustomersController extends Controller
                 $mutasi->status = $GetPrabayarHistory['status'];
                 $mutasi->trxid_api = $trxid_api;
                 $mutasi->harga_normal = $GetPrabayarHistory['price'];
-                $mutasi->harga_jual = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 2000;
+                $mutasi->harga_jual = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 1000;
                 $mutasi->note = "ShopeePay | " . $GetPrabayarHistory['product_name'];
                 $mutasi->save();
 
@@ -2012,7 +2012,7 @@ class dashboardCustomersController extends Controller
                     $hutang = new Hutang;
                     $hutang->customer_id = $request->cus_id;
                     $hutang->trxid_api = $trxid_api;
-                    $hutang->nominal = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 2000;
+                    $hutang->nominal = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 1000;
                     $hutang->sisa = $hutang->nominal;
                     $hutang->keterangan = "ShopeePay | " . $GetPrabayarHistory['product_id'] . $GetPrabayarHistory['product_name'];
                     $hutang->save();
@@ -2021,7 +2021,7 @@ class dashboardCustomersController extends Controller
                     $hutang = new Hutang;
                     $hutang->customer_id = $request->cus_id;
                     $hutang->trxid_api = $trxid_api;
-                    $hutang->nominal = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 2000;
+                    $hutang->nominal = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 1000;
                     $hutang->sisa = $hutang->nominal;
                     $hutang->keterangan = "ShopeePay | " . $GetPrabayarHistory['product_id'] . $GetPrabayarHistory['product_name'];
                     $hutang->save();
@@ -2081,7 +2081,7 @@ class dashboardCustomersController extends Controller
                     $produkIni[] = $value;
                 }
             }
-            $harga = preg_replace('/[^0-9]/', '', $produkIni[0]['product_name']) + 2000;
+            $harga = preg_replace('/[^0-9]/', '', $produkIni[0]['product_name']) + 1000;
             // end Get Prabayar Product
 
             // pengurangan dompet
@@ -2159,7 +2159,7 @@ class dashboardCustomersController extends Controller
                     $mutasi->status = $GetPrabayarHistory['status'];
                     $mutasi->trxid_api = $trxid_api;
                     $mutasi->harga_normal = $GetPrabayarHistory['price'];
-                    $mutasi->harga_jual = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 2000;
+                    $mutasi->harga_jual = preg_replace('/[^0-9]/', '', $GetPrabayarHistory['product_name']) + 1000;
                     $mutasi->note = "ShopeePay | " . $GetPrabayarHistory['product_name'];;
                     $mutasi->save();
 
