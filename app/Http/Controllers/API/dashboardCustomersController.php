@@ -3634,4 +3634,207 @@ class dashboardCustomersController extends Controller
         return $decodeResponsePostPrabayar = json_decode($responsePostPrabayar, true);
         // end Post Prabayar
     }
+
+    public function transaksiTLPasca(Request $request)
+    {
+        // return $request->all();
+
+        if ($request->metode_pembayaran == "Hutang") {
+            // cek hutang
+            $hutangSaatIni = Hutang::where('customer_id', $request->cus_id)->sum('sisa');
+            if ($hutangSaatIni >= 300000) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Transaksi Ditolak',
+                    'keterangan' => 'Hutang Anda Sudah Banyak, Bayar Dulu !',
+                ], 200);
+            }
+            // membuat trxid_api
+            $trxid_api = $request->ref_id;
+
+            // Post Prabayar
+            $dataPostPrabayar = [
+                "ref_id" => $trxid_api,
+            ];
+            $curlPostPrabayar = curl_init();
+            curl_setopt_array($curlPostPrabayar, array(
+                CURLOPT_URL => "https://api.serpul.co.id/pascabayar/pay",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_TIMEOUT => 30000,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => $dataPostPrabayar,
+                CURLOPT_HTTPHEADER => array(
+                    'Accept: application/json',
+                    'Authorization: ' . config('api.serpul_key_api'),
+                ),
+            ));
+            $responsePostPrabayar = curl_exec($curlPostPrabayar);
+            $decodeResponsePostPrabayar = json_decode($responsePostPrabayar);
+            // end Post Prabayar
+
+            if ($decodeResponsePostPrabayar->responseCode == 400) { //failed inquiry
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Terjadi Gangguan',
+                    'keterangan' => $decodeResponsePostPrabayar->responseMessage,
+                ], 200);
+            } else { //success inquiry
+
+                // mencatat ke mutasi
+                $mutasi = new Mutations;
+                $mutasi->username = $request->username;
+                $mutasi->jenis_transaksi = 'Tagihan Listrik';
+                $mutasi->phone = $request->no_pelanggan;
+                $mutasi->status = $decodeResponsePostPrabayar->responseData->status;
+                $mutasi->trxid_api = $trxid_api;
+                $mutasi->harga_normal = $request->total_bayar;
+                $mutasi->harga_jual = $request->total_tagihan;
+                $mutasi->note = "Pembayaran Tagihan Listrik | " . $request->nama_pelanggan;
+                $mutasi->save();
+
+                if ($decodeResponsePostPrabayar->responseData->status == "PENDING" or $decodeResponsePostPrabayar->responseData->status == "PROCESS") {
+                    // mencatat ke hutang
+                    $hutang = new Hutang;
+                    $hutang->customer_id = $request->cus_id;
+                    $hutang->trxid_api = $trxid_api;
+                    $hutang->nominal = $request->total_tagihan;
+                    $hutang->sisa = $hutang->nominal;
+                    $hutang->keterangan = "Pembayaran Tagihan Listrik | " . $request->nama_pelanggan;
+                    $hutang->save();
+                } elseif ($decodeResponsePostPrabayar->responseData->status == "SUCCESS") {
+                    // mencatat ke hutang
+                    $hutang = new Hutang;
+                    $hutang->customer_id = $request->cus_id;
+                    $hutang->trxid_api = $trxid_api;
+                    $hutang->nominal = $request->total_tagihan;
+                    $hutang->sisa = $hutang->nominal;
+                    $hutang->keterangan = "Pembayaran Tagihan Listrik | " . $request->nama_pelanggan;
+                    $hutang->save();
+
+                    // menambah point
+                    $idCustomer = $request->cus_id;
+                    $UpdatePointCustomer = Customers::where('id', $idCustomer)->first();
+                    $UpdatePointCustomer->point = $UpdatePointCustomer->point + 1000;
+                    $UpdatePointCustomer->save();
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Transaksi Berhasil',
+                        'keterangan' => 'Coin Bertambah 1.000',
+                    ], 200);
+                }
+
+                // telegram_bot_trx
+                $chat_id = "360835825";
+                $cus = Customers::where('username', $request->username)->first();
+                $getUsername = $cus->username;
+                $getNama = $cus->name;
+                $getMessage = $mutasi->note;
+                $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
+                $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
+                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_exec($curl);
+                curl_close($curl);
+                // telegram_bot_trx
+            }
+        } elseif ($request->metode_pembayaran == "Dompet") {
+
+            $harga = $request->total_tagihan;
+            // end Get Prabayar Product
+
+            // pengurangan dompet
+            $idCustomer = $request->cus_id;
+            $Customer = Customers::where('id', $idCustomer)->get()->first();
+            $dompetSekarang = $Customer->saldo;
+            if ($dompetSekarang >= $harga) {
+
+
+                // melanjutkan trx
+                // membuat trxid_api
+                $trxid_api = $request->ref_id;
+
+                // Post Prabayar
+                $dataPostPrabayar = [
+                    "ref_id" => $trxid_api,
+                ];
+                $curlPostPrabayar = curl_init();
+                curl_setopt_array($curlPostPrabayar, array(
+                    CURLOPT_URL => "https://api.serpul.co.id/pascabayar/pay",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_TIMEOUT => 30000,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => $dataPostPrabayar,
+                    CURLOPT_HTTPHEADER => array(
+                        'Accept: application/json',
+                        'Authorization: ' . config('api.serpul_key_api'),
+                    ),
+                ));
+                $responsePostPrabayar = curl_exec($curlPostPrabayar);
+                $decodeResponsePostPrabayar = json_decode($responsePostPrabayar);
+                // end Post Prabayar
+                if ($decodeResponsePostPrabayar->responseCode == 400) { //failed inquiry
+                    return response()->json([
+                        'status' => 'failed',
+                        'message' => 'Terjadi Gangguan',
+                        'keterangan' => $decodeResponsePostPrabayar->responseMessage,
+                    ], 200);
+                } else { //success inquiry
+
+                    $saldoNew = $dompetSekarang - $harga;
+                    $Customer->saldo = $saldoNew;
+                    $Customer->save();
+                    // end pengurangan dompet
+
+                    // mencatat ke mutasi
+                    $mutasi = new Mutations;
+                    $mutasi->username = $request->username;
+                    $mutasi->jenis_transaksi = 'Tagihan Listrik';
+                    $mutasi->phone = $request->no_pelanggan;
+                    $mutasi->status = $decodeResponsePostPrabayar->responseData->status;
+                    $mutasi->trxid_api = $trxid_api;
+                    $mutasi->harga_normal = $request->total_bayar;
+                    $mutasi->harga_jual = $request->total_tagihan;
+                    $mutasi->note = "Pembayaran Tagihan Listrik | " . $request->nama_pelanggan;
+                    $mutasi->save();
+
+                    // telegram_bot_trx
+                    $chat_id = "360835825";
+                    $cus = Customers::where('username', $request->username)->first();
+                    $getUsername = $cus->username;
+                    $getNama = $cus->name;
+                    $getMessage = $mutasi->note;
+                    $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
+                    $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
+                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
+                    $curl = curl_init($url);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    curl_exec($curl);
+                    curl_close($curl);
+                    // telegram_bot_trx
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Transaksi diproses',
+                        'keterangan' => $decodeResponsePostPrabayar->responseMessage,
+                    ], 200);
+                }
+            } elseif ($dompetSekarang < $harga) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Transaksi Ditolak!',
+                    'keterangan' => 'Saldo Anda tidak cukup, saat ini saldo anda Rp. ' . number_format($dompetSekarang),
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Transaksi Ditolak!',
+                'keterangan' => 'metode pembayaran tidak valid'
+            ], 200);
+        }
+    }
 }

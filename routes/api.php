@@ -42,6 +42,7 @@ Route::middleware(['APISessionCustomers'])->group(function () {
     Route::post('/transaksi/vgml', [dashboardCustomersController::class, 'transaksivgml3']);
     Route::post('/transaksi/vgff', [dashboardCustomersController::class, 'transaksivgff3']);
     Route::post('/check-tagihan-pln/{id}', [dashboardCustomersController::class, 'CheckTagihanPLN']);
+    Route::post('/transaksi/tlpasca', [dashboardCustomersController::class, 'transaksiTLPasca']);
 });
 
 Route::middleware(['APISessionCustomerServices'])->group(function () {
