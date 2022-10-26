@@ -405,7 +405,7 @@ class dashboardCustomersController extends Controller
                 $cus = Customers::where('username', $request->username)->first();
                 $getUsername = $cus->username;
                 $getNama = $cus->name;
-                $getMessage = $mutasi->note;
+                $getMessage = $mutasi->note . " " . $request->no_hp;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                 $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
@@ -530,7 +530,7 @@ class dashboardCustomersController extends Controller
                     $cus = Customers::where('username', $request->username)->first();
                     $getUsername = $cus->username;
                     $getNama = $cus->name;
-                    $getMessage = $mutasi->note;
+                    $getMessage = $mutasi->note . " " . $request->no_hp;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                     $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
@@ -678,7 +678,7 @@ class dashboardCustomersController extends Controller
                 $cus = Customers::where('username', $request->username)->first();
                 $getUsername = $cus->username;
                 $getNama = $cus->name;
-                $getMessage = $mutasi->note;
+                $getMessage = $mutasi->note . " " . $request->no_hp;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                 $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
@@ -803,7 +803,7 @@ class dashboardCustomersController extends Controller
                     $cus = Customers::where('username', $request->username)->first();
                     $getUsername = $cus->username;
                     $getNama = $cus->name;
-                    $getMessage = $mutasi->note;
+                    $getMessage = $mutasi->note . " " . $request->no_hp;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                     $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
