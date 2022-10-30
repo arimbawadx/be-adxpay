@@ -34,7 +34,7 @@ class piutangCSController extends Controller
         $hutang->sisa = 0;
         $hutang->status = 'Lunas';
         $hutang->save();
-        return redirect('/cs/piutang/'.$cusId); 
+        return redirect('/cs/piutang/' . $cusId);
     }
 
     /**
@@ -57,7 +57,7 @@ class piutangCSController extends Controller
 
     public function lunaskan($id)
     {
-        $hutang = Hutang::where('customer_id', $id)->update(['status' =>'Lunas', 'sisa' => 0]);
+        $hutang = Hutang::where('customer_id', $id)->update(['status' => 'Lunas', 'sisa' => 0]);
         return redirect('/cs/piutang');
     }
 
@@ -90,7 +90,7 @@ class piutangCSController extends Controller
             $hutang->status = "Lunas";
             $hutang->save();
         }
-        return redirect('/cs/piutang/'.$cusId);
+        return redirect('/cs/piutang/' . $cusId);
     }
 
     /**
@@ -110,7 +110,7 @@ class piutangCSController extends Controller
         }
         $hutang->keterangan = $request->keterangan;
         $hutang->save();
-        return redirect('/cs/piutang/'.$hutang->customer_id);
+        return redirect('/cs/piutang/' . $hutang->customer_id);
     }
 
     /**
@@ -123,6 +123,6 @@ class piutangCSController extends Controller
     {
         $hutang = Hutang::where('id', $id)->first();
         $hutang->delete();
-        return redirect('/cs/piutang/'.$cusId);        
+        return redirect('/cs/piutang/' . $cusId);
     }
 }

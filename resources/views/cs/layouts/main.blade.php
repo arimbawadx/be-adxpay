@@ -57,7 +57,7 @@
       width: 100%;
       height: 100%;
       overflow: visible;
-      background: #ffffff url('https://manifest.arimbawadx.com/loader/loader2.gif') no-repeat center center;
+      background: #ffffff url('https://manifest.arimbawadx.my.id/loader/loader.gif') no-repeat center center;
     }
 
     .fireworks-container {
@@ -227,15 +227,23 @@
       // end selectpicker
 
       // datatables
-      $('#datatables').DataTable();
+      $('#datatables').DataTable({
+        "order": [
+          [0, 'desc']
+        ]
+      });
       // end datatables
 
       // datatables2
-      $('#datatables2').DataTable();
+      $('#datatables2').DataTable({
+        "order": [
+          [0, 'desc'],
+        ]
+      });
       // end datatables2
 
       // delete cs
-      $('.delete_cs').click(function() {
+      $(document).on('click', '.delete_cs', function() {
         var cs_id = $(this).attr('cs-id');
         var nama_cs = $(this).attr('nama-cs');
         Swal.fire({
@@ -399,7 +407,7 @@
       // end konfirm-trx
 
       // restore cs
-      $('.restore_cs').click(function() {
+      $(document).on('click', '.restore_cs', function() {
         var cs_id = $(this).attr('cs-id');
         var nama_cs = $(this).attr('nama-cs');
         Swal.fire({
@@ -440,7 +448,7 @@
       // end delete customer
 
       // restore customer
-      $('.restore_cus').click(function() {
+      $(document).on('click', '.restore_cus', function() {
         var cus_id = $(this).attr('cus-id');
         var nama_cus = $(this).attr('nama-cus');
         Swal.fire({
@@ -460,7 +468,7 @@
       // end restore customer
 
       // valid bukti trf
-      $('#valid-bt').click(function() {
+      $(document).on('click', '#valid-bt', function() {
         var mts_id = $(this).attr('mutasi-id');
         Swal.fire({
           title: "Yakin sudah valid ?",
@@ -479,7 +487,7 @@
       // end valid bukti trf
 
       // invalid bukti trf
-      $('#invalid-bt').click(function() {
+      $(document).on('click', '#invalid-bt', function() {
         var mts_id = $(this).attr('mutasi-id');
         Swal.fire({
           title: "Yakin bukti tidak valid ?",
@@ -498,7 +506,7 @@
       // end valid bukti trf
 
       // lunaskan hutang customer
-      $('.lunaskan').click(function() {
+      $(document).on('click', '.lunaskan', function() {
         var cus_id = $(this).attr('cus-id');
         var nama_cus = $(this).attr('nama-cus');
         Swal.fire({
@@ -518,7 +526,7 @@
       // end lunaskan hutang customer
 
       // hapus hutang customer
-      $('.hapus-hutang').click(function() {
+      $(document).on('click', '.hapus-hutang', function() {
         var hutang_id = $(this).attr('hutang-id');
         var nama_hutang = $(this).attr('nama-hutang');
         var cus_id = $(this).attr('cus-id');
@@ -539,7 +547,7 @@
       // end hapus hutang customer
 
       // lunaskan detail hutang customer
-      $('.lunaskan-detail').click(function() {
+      $(document).on('click', '.lunaskan-detail', function() {
         var hutang_id = $(this).attr('hutang-id');
         var nama_hutang = $(this).attr('nama-hutang');
         var cus_id = $(this).attr('cus-id');
