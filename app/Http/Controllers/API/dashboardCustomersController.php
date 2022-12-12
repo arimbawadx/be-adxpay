@@ -214,6 +214,21 @@ class dashboardCustomersController extends Controller
                 'message' => 'Transaksi Lama',
                 'keterangan' => 'Transaksi lama akan dihapus otomatis, simpan data transaksi Anda!',
             ], 200);
+
+            // telegram_bot_trx
+            $chat_id = "360835825";
+            $cus = Customers::where('username', $request->username)->first();
+            $getUsername = $cus->username;
+            $getNama = $cus->name;
+            $getMessage = "Refresh trx Lama";
+            $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
+            $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
+            $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_exec($curl);
+            curl_close($curl);
+            // telegram_bot_trx
         } else {
             if ($GetPrabayarHistory['status'] != "PENDING") {
                 // perubahan mutasi
@@ -244,7 +259,7 @@ class dashboardCustomersController extends Controller
                             'keterangan' => 'Terjadi gangguan, hubungi admin',
                         ], 200);
                     }
-                    
+
                     // telegram_bot_trx
                     $chat_id = "360835825";
                     $cus = Customers::where('username', $request->username)->first();
@@ -270,7 +285,7 @@ class dashboardCustomersController extends Controller
                         'message' => 'Transaksi Berhasil',
                         'keterangan' => 'Coin Bertambah 1000',
                     ], 200);
-                    
+
                     // telegram_bot_trx
                     $chat_id = "360835825";
                     $cus = Customers::where('username', $request->username)->first();
@@ -292,7 +307,7 @@ class dashboardCustomersController extends Controller
                     'message' => 'Transaksi Sedang Diproses',
                     'keterangan' => 'Transaksi diproses, silahkan menunggu',
                 ], 200);
-                
+
                 // telegram_bot_trx
                 $chat_id = "360835825";
                 $cus = Customers::where('username', $request->username)->first();
@@ -3679,7 +3694,7 @@ class dashboardCustomersController extends Controller
         return $decodeResponsePostPrabayar = json_decode($responsePostPrabayar, true);
         // end Post Prabayar
     }
-    
+
     public function transaksiTLPasca(Request $request)
     {
         // return $request->all();
