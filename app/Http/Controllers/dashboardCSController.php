@@ -68,7 +68,8 @@ class dashboardCSController extends Controller
         $TotalsaldoCustomer = Customers::all()->sum('saldo');
         $TotalHutangCustomer = Hutang::all()->sum('sisa');
         $AkumulasiSaldoCS = $saldo - $TotalsaldoCustomer;
-        $mutasi = Mutations::whereDate('created_at', '!=', date('Y-m-d'))->get()->sortByDesc('created_at');
+        // $mutasi = Mutations::whereDate('created_at', '!=', date('Y-m-d'))->get()->sortByDesc('created_at');
+        $mutasi = Mutations::whereDate('created_at', '!=', date('Y-m-d'))->latest()->take(5)->get();
         $mutasiThisDay = Mutations::whereDate('created_at', '=', date('Y-m-d'))->get()->sortByDesc('created_at');
         return view('cs.pages.dashboard', compact('saldo', 'TotalsaldoCustomer', 'AkumulasiSaldoCS', 'TotalHutangCustomer', 'mutasi', 'mutasiThisDay', 'jtrxThisDay'));
     }

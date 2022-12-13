@@ -12,4 +12,9 @@ class Customers extends Model
     {
         return $this->hasMany('App\Models\Hutang');
     }
+    
+    public function Mutations()
+    {
+        return $this->hasMany('App\Models\Mutations');
+    }
 }

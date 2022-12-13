@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mutations extends Model
 {
     use HasFactory;
+    public function Customers()
+    {
+        return $this->belongsTo('App\Models\Customers', 'username');
+    }
 }

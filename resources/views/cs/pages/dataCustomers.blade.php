@@ -58,6 +58,8 @@
                     <tr>
                       <th>No</th>
                       <th>Nama</th>
+                      <th>Saldo</th>
+                      <th>Coin</th>
                       <th>Username</th>
                       <th>No HP</th>
                       <th>Email</th>
@@ -69,6 +71,8 @@
                     <tr>
                       <th>{{$i+1}}</th>
                       <td>{{$dataCustomer -> name}} @if($dataCustomer -> verified == 1)<i class="bi bi-patch-check-fill text-primary"></i>@else<i class="bi bi-patch-exclamation-fill text-warning"></i>@endif</td>
+                      <td>{{$dataCustomer -> saldo}}</td>
+                      <td>{{$dataCustomer -> point}}</td>
                       <td>{{$dataCustomer -> username}}</td>
                       <td>{{$dataCustomer -> phone_number}}</td>
                       <td>{{$dataCustomer -> email}}</td>

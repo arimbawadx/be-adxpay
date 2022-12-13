@@ -82,13 +82,13 @@
       <!-- ./col -->
     </div>
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card text-white bg-dark mb-3">
-            <div class="card-header text-center"><h3>Transaksi Digital</h3></div>
-            <div class="card-body">
-              <div class="row">
+    <!--<div class="container">-->
+    <!--  <div class="row justify-content-center">-->
+    <!--    <div class="col-md-8">-->
+    <!--      <div class="card text-white bg-dark mb-3">-->
+    <!--        <div class="card-header text-center"><h3>Transaksi Digital</h3></div>-->
+    <!--        <div class="card-body">-->
+    <!--          <div class="row">-->
                 <!-- The Modal Comming Soon-->
                 <div class="modal" id="CommingSoon">
                   <div class="modal-dialog">
@@ -102,90 +102,90 @@
                   </div>
                 </div>
                 
-                <a href="/cs/transaksi/PIU/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/pulsa.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Pulsa Isi Ulang</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/PIU/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/pulsa.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Pulsa Isi Ulang</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/PD/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/kuota.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Data Internet</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/PD/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/kuota.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Data Internet</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/TL/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/PLN.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Token Listrik</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/TL/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/PLN.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Token Listrik</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/Bank/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/Bank.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Transfer Bank</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/Bank/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/Bank.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Transfer Bank</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/DANA/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/dana.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Topup DANA</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/DANA/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/dana.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Topup DANA</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/OVO/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/OVO.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Topup OVO</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/OVO/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/OVO.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Topup OVO</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
                 
 
-                <a href="/cs/transaksi/ShopeePay/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/ShopeePay.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Topup ShopeePay</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/ShopeePay/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/ShopeePay.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Topup ShopeePay</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/GoPay/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/gopay.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Topup GoPay</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/GoPay/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/gopay.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Topup GoPay</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/LinkAja/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/linkaja.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Topup LinkAja</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/LinkAja/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/linkaja.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Topup LinkAja</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/wifi-id/1" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/wifi-id.png')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Akses Wifi ID</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/wifi-id/1" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/wifi-id.png')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Akses Wifi ID</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/vgml/2" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/mobile_legend.jpg')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Diamond Mobile Legend</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/vgml/2" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/mobile_legend.jpg')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Diamond Mobile Legend</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
 
-                <a href="/cs/transaksi/vgff/2" class="col-6 col-md-3">
-                  <div class="card bg-light mb-3">
-                    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/free_fire.jpg')}}" class="card-img-top rounded-top">
-                    <h6 class="text-center">Diamond Free Fire</h6>
-                  </div>
-                </a>
+                <!--<a href="/cs/transaksi/vgff/2" class="col-6 col-md-3">-->
+                <!--  <div class="card bg-light mb-3">-->
+                <!--    <img style="background-color: white;" src="{{asset('lte/dist/img/logo/free_fire.jpg')}}" class="card-img-top rounded-top">-->
+                <!--    <h6 class="text-center">Diamond Free Fire</h6>-->
+                <!--  </div>-->
+                <!--</a>-->
                 
 
                 <!-- comming soon -->
@@ -197,12 +197,12 @@
                 </a> -->
                 <!-- end comming soon -->
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
 
     <div class="container mt-3">
       <div class="row justify-content-center">
@@ -222,19 +222,19 @@
               @if($mts->status == "FAILED") 
               <span class="float-right text-danger text-uppercase"><strong>gagal</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-danger">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-danger">from {{ $get }}</p></div>
               <div class="text-danger text-justify">{{$mts -> note}}</div>
               <div class=""><a href="/cs/transaksi/{{$mts->trxid_api}}" class="btn btn-primary btn-block">Lihat Bukti</a></div>
               @elseif($mts->status == "SUCCESS")
               <span class="float-right text-success text-uppercase"><strong>sukses</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-success">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-success">from {{ $get }}</p></div>
               <div class="text-success text-justify">{{$mts -> note}}</div>
               <div class=""><a href="/cs/transaksi/{{$mts->trxid_api}}" class="btn btn-primary btn-block">Lihat Bukti</a></div>
               @else
               <span class="float-right text-warning text-uppercase"><strong>diproses</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-warning">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-warning">from {{ $get }}</p></div>
               <div class="text-warning text-justify">{{$mts -> note}}</div>
               @endif
             </div>
@@ -256,25 +256,25 @@
           @foreach($mutasi as $mts)
           <div class="card">
             <div class="card-body p-2">
-              <?php $date = new DateTime($mts->created_at) ?>
+              <?php $date = new DateTime($mts->created_at); $get = \App\Models\Customers::where('username', $mts->username)->get(['name'])->first(); ?>
               <span class="float-left">{{$date->format('d F Y   G:i')}} WITA</span>
 
               @if($mts->status == "FAILED") 
               <span class="float-right text-danger text-uppercase"><strong>gagal</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-danger">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-danger">from {{ $get }}</p></div>
               <div class="text-danger text-justify">{{$mts -> note}}</div>
               <div class=""><a href="/cs/transaksi/{{$mts->trxid_api}}" class="btn btn-primary btn-block">Lihat Bukti</a></div>
               @elseif($mts->status == "SUCCESS")
               <span class="float-right text-success text-uppercase"><strong>sukses</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-success">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-success">from {{ $get }}</p></div>
               <div class="text-success text-justify">{{$mts -> note}}</div>
               <div class=""><a href="/cs/transaksi/{{$mts->trxid_api}}" class="btn btn-primary btn-block">Lihat Bukti</a></div>
               @else
               <span class="float-right text-warning text-uppercase"><strong>diproses</strong></span>
               <br><div>{{$mts -> phone}}</div>
-              <div>({{$mts -> code}}) <p class="badge badge-warning">from {{$mts -> username}}</p></div>
+              <div>({{$mts -> code}}) <p class="badge badge-warning">from {{ $get }}</p></div>
               <div class="text-warning text-justify">{{$mts -> note}}</div>
               @endif
             </div>
