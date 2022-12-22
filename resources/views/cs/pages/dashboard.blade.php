@@ -216,7 +216,7 @@
           @foreach($mutasiThisDay as $mts)
           <div class="card">
             <div class="card-body p-2">
-              <?php $date = new DateTime($mts->created_at) ?>
+              <?php $date = new DateTime($mts->created_at); $get = \App\Models\Customers::where('username', $mts->username)->get(['name'])->first(); ?>
               <span class="float-left">{{$date->format('d F Y   G:i')}} WITA</span>
 
               @if($mts->status == "FAILED") 
