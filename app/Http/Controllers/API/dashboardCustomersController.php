@@ -61,6 +61,17 @@ class dashboardCustomersController extends Controller
             'semua_mutasi_sebelumnya' => $mutasi,
         ], 200);
     }
+    
+    public function getDataTrxCustomerByTrxAPI(Request $request)
+    {
+        $username = $request->username;
+        $trxAPI = $request->trxid_api;
+        $mutasi = Mutations::where('trxid_api', $trxAPI)->get();
+        return response()->json([
+            'status' => 'success',
+            'mutasi' => $mutasi,
+        ], 200);
+    }
 
     public function getBuktiTrxCustomer(Request $request, $id)
     {
@@ -181,6 +192,35 @@ class dashboardCustomersController extends Controller
             'keterangan' => 'Saldo anda saat ini sebesar Rp. ' . $customer['saldo'],
         ], 200);
     }
+    
+    public function testBot(){
+        // https://api.telegram.org/bot5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow/sendMessage?chat_id=360835825&text=testbot
+        // telegram_bot_trx
+        $chat_id = "360835825";
+        $getMessage = "test bot";
+        $messageTemplate = $getMessage;
+        $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
+        $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($curl);
+        curl_close($curl);
+        // telegram_bot_trx
+        
+        $curlBotTelegramNotif = curl_init();
+        curl_setopt_array($curlBotTelegramNotif, array(
+            CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+            ),
+        ));
+        $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+        return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
+    }
 
     public function UpdatePendingTrx(Request $request, $id)
     {
@@ -214,13 +254,12 @@ class dashboardCustomersController extends Controller
                 'message' => 'Transaksi Lama',
                 'keterangan' => 'Transaksi lama akan dihapus otomatis, simpan data transaksi Anda!',
             ], 200);
-
             // telegram_bot_trx
             $chat_id = "360835825";
             $cus = Customers::where('username', $request->username)->first();
             $getUsername = $cus->username;
             $getNama = $cus->name;
-            $getMessage = "Refresh trx Lama";
+            $getMessage = "TRX LAMA DI REFRESH";
             $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
             $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
             $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
@@ -259,7 +298,7 @@ class dashboardCustomersController extends Controller
                             'keterangan' => 'Terjadi gangguan, hubungi admin',
                         ], 200);
                     }
-
+                    
                     // telegram_bot_trx
                     $chat_id = "360835825";
                     $cus = Customers::where('username', $request->username)->first();
@@ -285,7 +324,7 @@ class dashboardCustomersController extends Controller
                         'message' => 'Transaksi Berhasil',
                         'keterangan' => 'Coin Bertambah 1000',
                     ], 200);
-
+                    
                     // telegram_bot_trx
                     $chat_id = "360835825";
                     $cus = Customers::where('username', $request->username)->first();
@@ -307,7 +346,7 @@ class dashboardCustomersController extends Controller
                     'message' => 'Transaksi Sedang Diproses',
                     'keterangan' => 'Transaksi diproses, silahkan menunggu',
                 ], 200);
-
+                
                 // telegram_bot_trx
                 $chat_id = "360835825";
                 $cus = Customers::where('username', $request->username)->first();
@@ -3694,7 +3733,7 @@ class dashboardCustomersController extends Controller
         return $decodeResponsePostPrabayar = json_decode($responsePostPrabayar, true);
         // end Post Prabayar
     }
-
+    
     public function transaksiTLPasca(Request $request)
     {
         // return $request->all();

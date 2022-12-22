@@ -22,6 +22,7 @@ Route::middleware(['APISessionCustomers'])->group(function () {
     Route::post('/customers/ganti-profile/{id}', [dashboardCustomersController::class, 'changeProfile']);
     Route::get('/get-data-cus/{id}', [dashboardCustomersController::class, 'getDataCustomer']);
     Route::get('/get-data-trx-cus', [dashboardCustomersController::class, 'getDataTrxCustomer']);
+    Route::get('/get-data-trx-cus-trxapi', [dashboardCustomersController::class, 'getDataTrxCustomerByTrxAPI']);
     Route::get('/get-bukti-trx-cus/{id}', [dashboardCustomersController::class, 'getBuktiTrxCustomer']);
     Route::get('/get-prabayar-produk/{id}', [dashboardCustomersController::class, 'GetPrabayarProduct']);
     Route::get('/get-prabayar-operator/{id}', [dashboardCustomersController::class, 'GetPrabayarOperator']);
@@ -52,3 +53,4 @@ Route::middleware(['APISessionCustomerServices'])->group(function () {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/daftar-cus', [dashboardCustomersController::class, 'daftarCustomers']);
 Route::post('/new-cus-gakun', [AuthController::class, 'LoginWithGoogle']);
+Route::get('/test-bot', [dashboardCustomersController::class, 'testBot']);
