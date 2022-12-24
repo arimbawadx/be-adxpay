@@ -200,26 +200,23 @@ class dashboardCustomersController extends Controller
         $getMessage = "test bot";
         $messageTemplate = $getMessage;
         $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-        $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($curl);
-        curl_close($curl);
-        // telegram_bot_trx
         
         $curlBotTelegramNotif = curl_init();
         curl_setopt_array($curlBotTelegramNotif, array(
-            CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate",
+            CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 30000,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS=>array(
+                'chat_id' => $chat_id,
+                'text' => $getMessage
+            ),
             CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
+                'Content-Type'=> 'application/json',
             ),
         ));
         $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
-        return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
+        // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
+        // telegram_bot_trx
     }
 
     public function UpdatePendingTrx(Request $request, $id)
@@ -262,11 +259,21 @@ class dashboardCustomersController extends Controller
             $getMessage = "TRX LAMA DI REFRESH";
             $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
             $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-            $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_exec($curl);
-            curl_close($curl);
+            $curlBotTelegramNotif = curl_init();
+            curl_setopt_array($curlBotTelegramNotif, array(
+                CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS=>array(
+                    'chat_id' => $chat_id,
+                    'text' => $messageTemplate
+                ),
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type'=> 'application/json',
+                ),
+            ));
+            $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+            // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
             // telegram_bot_trx
         } else {
             if ($GetPrabayarHistory['status'] != "PENDING") {
@@ -307,11 +314,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = "Gagal";
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                 } elseif ($GetPrabayarHistory['status'] == "SUCCESS") {
                     // menambah point
@@ -333,11 +350,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = "Sukses";
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                 }
             } elseif ($GetPrabayarHistory['status'] == "PENDING") {
@@ -356,10 +383,21 @@ class dashboardCustomersController extends Controller
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                 $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         }
@@ -507,11 +545,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note . " " . $request->no_hp;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -633,10 +681,21 @@ class dashboardCustomersController extends Controller
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
                     $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -780,11 +839,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note . " " . $request->no_hp;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -905,11 +974,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note . " " . $request->no_hp;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -1053,11 +1132,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -1178,11 +1267,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -1326,11 +1425,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -1451,11 +1560,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -1599,11 +1718,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -1724,11 +1853,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -1872,11 +2011,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -1997,11 +2146,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -2145,11 +2304,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -2270,11 +2439,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -2418,11 +2597,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -2543,11 +2732,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -2691,11 +2890,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -2816,11 +3025,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -2964,11 +3183,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -3090,11 +3319,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -3238,11 +3477,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -3364,11 +3613,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -3512,11 +3771,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -3638,11 +3907,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
@@ -3690,11 +3969,21 @@ class dashboardCustomersController extends Controller
         $getMessage = "Pendaftar Pengguna Baru";
         $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0ANo Hp : $getNoHP%0A%0A%0A$getMessage";
         $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-        $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($curl);
-        curl_close($curl);
+        $curlBotTelegramNotif = curl_init();
+        curl_setopt_array($curlBotTelegramNotif, array(
+            CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS=>array(
+                'chat_id' => $chat_id,
+                'text' => $messageTemplate
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type'=> 'application/json',
+            ),
+        ));
+        $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+        // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
         // telegram_bot_trx
 
         return response()->json([
@@ -3832,11 +4121,21 @@ class dashboardCustomersController extends Controller
                 $getMessage = $mutasi->note;
                 $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                 $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_exec($curl);
-                curl_close($curl);
+                $curlBotTelegramNotif = curl_init();
+                curl_setopt_array($curlBotTelegramNotif, array(
+                    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS=>array(
+                        'chat_id' => $chat_id,
+                        'text' => $messageTemplate
+                    ),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type'=> 'application/json',
+                    ),
+                ));
+                $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                 // telegram_bot_trx
             }
         } elseif ($request->metode_pembayaran == "Dompet") {
@@ -3909,11 +4208,21 @@ class dashboardCustomersController extends Controller
                     $getMessage = $mutasi->note;
                     $messageTemplate = "Nama : $getNama%0AUsername : $getUsername%0A%0A%0A$getMessage";
                     $token = "5289156712:AAHGgFmHb97QIuSrSFOzuF9enJQ0wMIR4ow";
-                    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$messageTemplate";
-                    $curl = curl_init($url);
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_exec($curl);
-                    curl_close($curl);
+                    $curlBotTelegramNotif = curl_init();
+                    curl_setopt_array($curlBotTelegramNotif, array(
+                        CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_POSTFIELDS=>array(
+                            'chat_id' => $chat_id,
+                            'text' => $messageTemplate
+                        ),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type'=> 'application/json',
+                        ),
+                    ));
+                    $curlBotTelegramNotif = curl_exec($curlBotTelegramNotif);
+                    // return $curlBotTelegramNotifResponse = json_decode($curlBotTelegramNotif, 1);
                     // telegram_bot_trx
                     return response()->json([
                         'status' => 'success',
